@@ -1,10 +1,11 @@
 import './Player.css';
 import back_arrow_icon from '../../assets/back_arrow_icon.png'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import trailers from '../../trailers.json'
 
 const Player = () => {
+  const navigate = useNavigate();
   const [apiData, setApiData] = useState({
     Title:"",
     Type:"",
@@ -36,7 +37,7 @@ const Player = () => {
             setApiData(mergedData);
          
           
-        console.log(mergedData.trailerURL)
+        // console.log(mergedData)
         
         })
         .catch(err => console.error(err));
@@ -45,7 +46,7 @@ const Player = () => {
     },[])
   return (
     <div className='player'>
-      <img src={back_arrow_icon} alt='' />
+      <img src={back_arrow_icon} alt='' onClick={()=>navigate('/')}/>
       <iframe width="90%" height="90%" src={apiData.trailerURL} title="trailer" frameBorder="0" allowFullScreen></iframe>
      
       <div className="player-info">

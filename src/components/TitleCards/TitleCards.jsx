@@ -2,8 +2,10 @@ import './TitleCards.css';
 // import cards_data from '../../assets/cards/Cards_data';  `
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TitleCards = ({ title, category }) => {
+  const navigate = useNavigate();
 
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef();
@@ -41,16 +43,18 @@ const TitleCards = ({ title, category }) => {
 
         {
           apiData.length > 0 ? (apiData.map((card, index) => (
-            <div className='card' key={index}>
+            <div className='card' key={index} onClick={()=>navigate(`/player/${card.imdbID}`)}>
 
               <img src={card.Poster} alt='kk' />
               <p>{card.Title}</p>
             </div>
+            
           ))
+          
           ) : (null
 
           )}
-
+        
       </div>
     </div>
   )
