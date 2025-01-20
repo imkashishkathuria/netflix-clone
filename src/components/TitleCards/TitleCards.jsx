@@ -3,7 +3,7 @@ import './TitleCards.css';
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 
-const TitleCards = ({ title, category }) => {
+const TitleCards =  ({ title, category }) => {
 
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef();
