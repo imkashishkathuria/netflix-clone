@@ -18,7 +18,7 @@ const TitleCards = ({ title, category }) => {
   }
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?s=${encodeURIComponent(category ? category:"game")}&apikey=c8a14e9a`)
+    fetch(`https://www.omdbapi.com/?s=${encodeURIComponent(category ? category:"game")}&apikey=${import.meta.env.VITE_OMDB_API_KEY}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`)
